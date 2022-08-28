@@ -6,12 +6,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
+  title: "Go Fiber",
+  tagline: "한국어 번역",
+  url: 'https://taewan-gu.github.io',
   baseUrl: '/',
   projectName: 'Taewan-Gu.github.io',
   organizationName: 'Taewan-Gu',
+  deploymentBranch: "deploy",
   trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -57,7 +58,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'Fiber 한국어 번역',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -67,13 +68,7 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
+            label: 'Docs',
           },
         ],
       },
@@ -81,46 +76,55 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: '공식 홈페이지',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Home',
+                to: 'https://gofiber.io/',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Docs',
+                to: 'https://docs.gofiber.io/',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
+                label: 'Examples',
+                to: 'https://github.com/gofiber/recipes',
               },
               {
                 label: 'GitHub',
+                to: 'https://github.com/gofiber/fiber',
+              },
+            ],
+          },
+          {
+            title: '커뮤니티',
+            items: [
+              {
+                label: 'Discord',
+                href: 'https://discord.com/invite/bSnH7db',
+              },
+            ],
+          },
+          {
+            title: '사용 프레임워크',
+            items: [
+              {
+                label: 'Docusaurus',
                 href: 'https://github.com/facebook/docusaurus',
               },
             ],
           },
+          {
+            title: '프로젝트 번역 도움',
+            items: [
+              {
+                label: 'Taewan Gu',
+                href: 'https://github.com/Taewan-Gu',
+              },
+            ],
+          },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Go Fiber Translation Project, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

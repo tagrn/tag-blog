@@ -1,8 +1,14 @@
 .features {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 2rem 0;
+  margin: 0 0;
   width: 100%;
+}
+
+.descriptionMainFeature {
+  font-weight: 550;
 }
 
 .featureSvg {
