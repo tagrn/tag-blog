@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[2278],{2271:e=>{e.exports=JSON.parse('{"title":"EXTRA","slug":"/category/extra","permalink":"/docs/category/extra","navigation":{"previous":{"title":"Make Fiber Faster","permalink":"/docs/GUIDE/Make Fiber Faster"},"next":{"title":"FAQ","permalink":"/docs/EXTRA/FAQ"}}}')}}]);

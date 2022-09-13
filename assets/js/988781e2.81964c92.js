@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[9493],{6800:e=>{e.exports=JSON.parse('{"title":"API","slug":"/category/api","permalink":"/docs/category/api","navigation":{"previous":{"title":"Welcome","permalink":"/docs/intro"},"next":{"title":"Create a Page","permalink":"/docs/API/create-a-page"}}}')}}]);
