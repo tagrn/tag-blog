@@ -87,10 +87,6 @@ const config = {
                 to: 'https://docs.gofiber.io/',
               },
               {
-                label: 'Examples',
-                to: 'https://github.com/gofiber/recipes',
-              },
-              {
                 label: 'GitHub',
                 to: 'https://github.com/gofiber/fiber',
               },
@@ -106,7 +102,7 @@ const config = {
             ],
           },
           {
-            title: '사용 프레임워크',
+            title: '문서 프레임워크',
             items: [
               {
                 label: 'Docusaurus',

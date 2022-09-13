@@ -11,11 +11,11 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Go Fiber',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Golang Framework',
+    Svg: require('@site/static/img/logo.svg').default,
     description: (
       <>
-        Go Fiber Framework를 쉽게 사용하기 위한 
+        Fiber Framework를 쉽게 사용하기 위한 
         <br></br>
         한국어 번역 사이트입니다.
       </>
