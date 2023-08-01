@@ -1,18 +1,17 @@
 name: deploy S3
 
-command:
-  NPM:
-    INSTALL: npm install
-    BUILD: npm run build
-  YARN:
-    INSTALL: yarn install
-    BUILD: yarn build
-
 env:
+  COMMAND:
+    NPM:
+      INSTALL: npm install
+      BUILD: npm run build
+    YARN:
+      INSTALL: yarn install
+      BUILD: yarn build
   BRANCH: main
   NODE_VERSION: 18.x
-  INSTALL: ${{ command.YARN.INSTALL }}
-  BUILD: ${{ command.YARN.BUILD }}
+  INSTALL: ${{ env.COMMAND.YARN.INSTALL }}
+  BUILD: ${{ env.COMMAND.YARN.BUILD }}
   AWS_REGION: ap-northeast-2
   AWS_S3_BUCKET: agaein
 
