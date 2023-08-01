@@ -1,16 +1,15 @@
 name: deploy S3
 
+on:
+  push:
+    branch: main
+
 env:
-  BRANCH: main
   NODE_VERSION: 18.x
   INSTALL_COMMAND: yarn install
   BUILD_COMMAND: yarn build
   AWS_REGION: ap-northeast-2
   AWS_S3_BUCKET: agaein
-
-on:
-  push:
-    branch: ${{ env.BRANCH }}
 
 jobs:
   build-and-deploy:
@@ -21,7 +20,7 @@ jobs:
       - name: set node version
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ NODE_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
       - name: dependency install
         run: yarn install
       - name: build
