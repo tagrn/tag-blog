@@ -9,7 +9,7 @@ env:
   INSTALL_COMMAND: yarn install
   BUILD_COMMAND: yarn build
   AWS_REGION: ap-northeast-2
-  AWS_S3_BUCKET: tag.blog
+  AWS_S3_BUCKET: tag.blog2
 
 jobs:
   build-and-deploy:
