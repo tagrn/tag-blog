@@ -11,6 +11,11 @@ jobs:
     steps:
       - name: git clone
         uses: actions/checkout@v3
+      
+      - name: set node version
+        - uses: actions/setup-node@v3
+          with:
+            node-version: '18'
 
       - name: dependency install
         run: yarn install
