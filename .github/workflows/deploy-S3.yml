@@ -6,7 +6,6 @@ env:
   OWNER_OR_ORGANIZATION: sundayTen
   REPOSITORY: agaein
   USER: fksk94
-  BRANCH: develop
 
 name: ${{ env.WORKFLOW_NAME }}
 
@@ -23,7 +22,7 @@ jobs:
       - name: set node version
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: ${{ NODE_VERSION }}
       - name: dependency install
         run: yarn install
       - name: build
