@@ -13,7 +13,17 @@ const FeatureList: FeatureItem[] = [
     title: "Tag's Blog",
     description: (
       <div>
-        개발 중
+        <Link
+          to="https://twngg.notion.site/Taewan-Gu-34800b401d214840af80ae98215ac632"
+          style={{ paddingRight: 15 }}
+        >
+          Portfolio
+        </Link>
+        {'   |   '}
+        <Link to="https://github.com/tagrn" style={{ paddingLeft: 15 }}>
+          GitHub
+        </Link>
+        <br />
       </div>
     ),
   },
@@ -34,19 +44,11 @@ function Feature({ title, description }: FeatureItem) {
 export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
-      <div className="container">
+      <div className="container h-screen">
         <div className={styles.features}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
-        </div>
-        <div className={styles.features}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro"
-          >
-            Get Started
-          </Link>
         </div>
       </div>
     </section>

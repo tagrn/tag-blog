@@ -63,26 +63,28 @@ const config = {
             label: 'Learn',
           },
           { to: '/blog', label: 'Post', position: 'left' },
-          {
-            to: 'https://taewan.link',
-            label: 'AboutMe',
-            position: 'left',
-          },
-          {
-            to: 'https://github.com/tagrn',
-            label: 'GitHub',
-            position: 'left',
-          },
+          // {
+          //   to: 'https://taewan.link',
+          //   label: 'AboutMe',
+          //   position: 'left',
+          // },
+          // {
+          //   to: 'https://github.com/tagrn',
+          //   label: 'GitHub',
+          //   position: 'left',
+          // },
           {
             type: 'html',
             position: 'right',
             className: 'version',
-            value: `<div style="font:times">Updated at ${new Date().toISOString().slice(0, 10)}</div>`,
+            value: `<div style="font:times">Updated at ${new Date()
+              .toISOString()
+              .slice(0, 10)}</div>`,
           },
         ],
       },
       footer: {
-        copyright: "Mady by Engineer Tag",
+        copyright: 'Mady by Engineer Tag',
       },
       prism: {
         theme: lightCodeTheme,
