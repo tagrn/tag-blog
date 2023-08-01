@@ -9,7 +9,7 @@ env:
   INSTALL_COMMAND: yarn install
   BUILD_COMMAND: yarn build
   AWS_REGION: ap-northeast-2
-  AWS_S3_BUCKET: agaein
+  AWS_S3_BUCKET: tag.blog
 
 jobs:
   build-and-deploy:
@@ -22,11 +22,11 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: dependency install
-        run: yarn install
+        run: ${{ env.INSTALL_COMMAND }}
       - name: build
-        run: yarn build
+        run: ${{ env.BUILD_COMMAND }}
       - name: deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
-        run: aws s3 cp --recursive --region ap-northeast-2 build s3://tag.blog
+        run: aws s3 cp --recursive --region ${{ env.AWS_REGION }} build s3://${{ env.AWS_S3_BUCKET }}
