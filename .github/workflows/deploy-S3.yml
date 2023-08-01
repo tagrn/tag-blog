@@ -18,7 +18,7 @@ env:
 
 on:
   push:
-    branches: ['${{ env.BRANCH }}']
+    branch: ${{ env.BRANCH }}
 
 jobs:
   build-and-deploy:
