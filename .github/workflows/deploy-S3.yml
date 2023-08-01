@@ -1,0 +1,25 @@
+name: deploy S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git clone
+        uses: actions/checkout@v3
+
+      - name: dependency install
+        run: yarn install
+
+      - name: build
+        run: yarn build
+
+      - name: deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+        run: aws s3 cp --recursive --region ap-northeast-2 build s3://tag.blog
