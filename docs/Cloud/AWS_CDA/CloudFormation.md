@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-description: 123
+description: 인프라 자동화 서비스의 기본(초석)
 ---
 
 # Cloud Formation
