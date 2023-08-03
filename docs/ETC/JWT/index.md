@@ -20,7 +20,7 @@ RFC란 Request for Comments의 약자로써, 컴퓨터 네트워크 공학 등�
 
 ![rfc-type](./rfc-type.png)
 
-[RFC 문서](ktword.co.kr/abbr_view.php?nav=&m_temp1=177&id=420) 참고
+[**RFC 문서**](http://ktword.co.kr/abbr_view.php?nav=&m_temp1=177&id=420) 참고
 :::
 
 <br />
@@ -80,7 +80,7 @@ HMAC은 해시라는 것이 MAC에 붙은 것이다. 해쉬 키와 알고리즘�
 구조가 JWS 3개, JWE 6개로 다르다보니, 각 파트마다 닷(.)으로 구분한다. 그래서 닷(.)의 개수를 보면 바로 구분 가능하다. 하지만 위에서 보면 오른쪽의 닷으로 나뉘어져있는 것은 6개가 아닌 5개이다. 이는 마지막 나뉘어진 부분에 Ciphertext, JWE Authentication Tag가 같이 처리되기 때문이다.
 
 :::info
-[공식문서](https://datatracker.ietf.org/doc/html/rfc7516) 참고
+[**공식문서**](https://datatracker.ietf.org/doc/html/rfc7516) 참고
 :::
 
 <br />
@@ -100,7 +100,7 @@ HMAC은 해시라는 것이 MAC에 붙은 것이다. 해쉬 키와 알고리즘�
 페이로드도 위와 같은 형식으로 작성되는데, 안에 있는 키값들은 정해져 있는 것도 있고 커스텀해서 넣을 수도 있다. 정해져 있는 것을 클레임 셋이라고 하는데, 이 클레임 셋들을 사용해서 작성하는게 낫다. 마찬가지로 다 작성되면 Base64Url 인코딩을 한다.
 
 :::info
-[정해진 클레임 셋](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1) 참고
+[**정해진 클레임 셋**](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1) 참고
 :::
 
 #### Signature
@@ -111,14 +111,14 @@ HMAC은 해시라는 것이 MAC에 붙은 것이다. 해쉬 키와 알고리즘�
 
 
 :::info
-[JWT 공식문서](https://jwt.io/introduction) 참고
+[**JWT 공식문서**](https://jwt.io/introduction) 참고
 :::
 
 <br />
 
 ### JWT 생성 사이트
 
-이렇게 JWT를 만들 수 있는데, [실제로 만들 수 있는 사이트](https://jwt.io/#debugger-io )가 있다. 사이트에 들어가면 밑의 사진처럼 해볼 수 있다.
+이렇게 JWT를 만들 수 있는데, [**실제로 만들 수 있는 사이트**](https://jwt.io/#debugger-io )가 있다. 사이트에 들어가면 밑의 사진처럼 해볼 수 있다.
 
 ![jwt-try](./jwt-try.png)
 
