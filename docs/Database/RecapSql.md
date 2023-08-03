@@ -3,7 +3,7 @@ sidebar_position: 1
 description: 개발자에겐 필수! SQL 기본문법에 대해 알아본다.
 ---
 
-# SQL 가본문법
+# SQL 기본문법
 
 ## SELECT
 
