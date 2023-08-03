@@ -63,16 +63,6 @@ const config = {
             label: 'Learn',
           },
           { to: '/blog', label: 'Post', position: 'left' },
-          // {
-          //   to: 'https://taewan.link',
-          //   label: 'AboutMe',
-          //   position: 'left',
-          // },
-          // {
-          //   to: 'https://github.com/tagrn',
-          //   label: 'GitHub',
-          //   position: 'left',
-          // },
           {
             type: 'html',
             position: 'right',
