@@ -42,7 +42,7 @@ sudo service docker restart
 docker pull mysql
 # 도커 이미지 확인
 docker images
-# 도커 이름은 --name 뒤에 넣고, password는 root 패스워드(사용자 지정)
+# 도커 이름은 --name 뒤에 넣고, password는 root 패스워드(사용자 지정), 포트도 커스텀 가능
 docker run -p 13306:3306 --name {name} -e MYSQL_ROOT_PASSWORD={password} -d mysql
 # 잘 실행되었는지 확인
 docker ps
@@ -103,7 +103,7 @@ set time_zone = 'asia/seoul';
 ```bash
 # mysql or container 나가는 명령어
 exit
-# 도커 재시작 명령어
+# 도커 컨테이너 재시작 명령어
 docker restart mysql
 # container or instance 시간대 변경 명령어
 ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
