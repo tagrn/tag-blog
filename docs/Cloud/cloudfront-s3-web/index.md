@@ -1,5 +1,5 @@
 ---
-sidebar_postion: 3
+sidebar_position: 3
 description: S3 정적 웹사이트를 개인 도메인으로 변경하고 HTTPS를 붙여보자.
 ---
 
@@ -9,8 +9,8 @@ S3 정적 웹사이트는 AWS에서 붙여준 주소를 사용하며, http로 �
 
 **준비물**
 
-* 개인 도메인 (Route53에서 구매)
-* [S3 정적 웹사이트](https://blog.taewan.link/docs/CICD/github-actions-for-s3)
+- 개인 도메인 (Route53에서 구매)
+- [S3 정적 웹사이트](https://blog.taewan.link/docs/CICD/github-actions-for-s3)
 
 ## CloudFront 배포
 
