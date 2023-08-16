@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-description: AWS Managed 인증 서비스
+description: AWS Database 종류 및 Cache 사용
 ---
 
 # DB&Cache
