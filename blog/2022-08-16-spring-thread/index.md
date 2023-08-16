@@ -109,11 +109,21 @@ public class SecondService {
 
 ### 원인 발견
 
- 뭐가 잘못 되었는지 알기 위해, 코드를 다시 작성하기도 하고, 프로젝트를 새로 파기도 하고, 주입되는 서비스들도 다 빼보고, 따로 비동기 Executor를 직접 만들고 생성해서 해봐도 똑같았다. 그러다 왠걸.. **`@Transactional` 어노테이션을 빼니 정상작동**하기 시작했다.
- 
-**Transaction과 DBCP!!**
- 
- 얘들 때문에 쓰레드가 10개만 도는 것이다. 진짜 원인 찾는데만 10시간 넘게 걸린 것 같다. 😂 로그를 볼 때 DB 커넥션이 끊어지던데, 그 끊어지는게 spring 자체가 기동이 중지되어서 인 줄 알았는데, DB 커넥션이 진짜 Timeout 되어서 끊어진 것일 줄이야. 원인을 찾았다고 해도 여기서 끝낼 순 없었다. 왜냐하면 서비스에는 `@Transactional`이 꼭 필요하기 때문이다.
+뭐가 잘못 되었는지 알기 위해, 코드를 다시 작성하기도 하고, 프로젝트를 새로 파기도 하고, 주입되는 서비스들도 다 빼보고, 따로 비동기 Executor를 직접 만들고 생성해서 해봐도 똑같았다. 그러다 왠걸..
+
+<br/>
+
+**`@Transactional` 어노테이션을 빼니 정상작동**하기 시작했다!!
+
+<br/>
+
+사실 해당 코드는 DB에 접근하는 코드가 없었으니까, 해당 어노테이션은 아닐거라 생각했다. DB에 접근하는 코드가 트랜잭션 어노테이션에 숨겨져 있는지 모르고 말이다.
+
+<br/>
+
+**Transaction과 DBCP**
+
+`@Transactional` 때문에 쓰레드가 10개만 도는 것이다. 진짜 원인 찾는데만 10시간 넘게 걸린 것 같다. 😂 로그를 볼 때 DB 커넥션이 끊어지던데, 그 끊어지는게 spring 자체가 기동이 중지되어서 인 줄 알았는데, DB 커넥션이 진짜 Timeout 되어서 끊어진 것일 줄이야. 원인을 찾았다고 해도 여기서 끝낼 순 없었다. 왜냐하면 서비스에는 `@Transactional`이 꼭 필요하기 때문이다.
 
 **"그럼 Transaction이 무슨 죄길래, ThreadPool이 지맘대로 움직이게 되는 것일까?"**
 
@@ -126,7 +136,7 @@ public class SecondService {
 해결 방안은 크게 두 가지이다.
 
 #### 1. DBCP maxPoolSize 변경
-   
+
 원인 자체를 없애는 방법이라 좋긴 하지만, DB의 성능도 고려해야 하고, 서비스 간의 협약도 생각해야 한다. MSA 구조 특성상 다른 서비스들과의 유대가 필요하기 때문이다. 예를 들어, 해당 DB의 Connection이 1000개로 제한되어 있고, 여러 서비스가 같이 사용하는 DB라면 Connection의 수도 마냥 늘려버리는 것도 한계가 있다. 그렇기 때문에 10개의 서비스가 100씩만 가지기로 했는데, 하나의 서비스가 이를 어기고 150개를 사용하는 순간 다른 서비스의 성능이 저하되니 말이다. (사실 MSA 제대로 하려면 DB도 각자 가지는게 맞는데, 이를 지키는 회사가 얼마나 있을까 싶다.)
 
 자, 그럼 DBCP 커넥션 풀 사이즈를 변경하고 실행시켜보자.
@@ -134,10 +144,10 @@ public class SecondService {
 ```yml
 spring:
   datasource:
-    driver-class-name: "org.postgresql.Driver"
-    url: "jdbc:postgresql://***.***.***.***:15432/{DB_NAME}"
-    username: {name}
-    password: {pw}
+    driver-class-name: 'org.postgresql.Driver'
+    url: 'jdbc:postgresql://***.***.***.***:15432/{DB_NAME}'
+    username: { name }
+    password: { pw }
     hikari:
       maximum-pool-size: 50
 ```
@@ -165,13 +175,14 @@ spring:
 2022-08-16 21:18:30.050 INFO 30824 --- [syncExecutor-10] c.i.b.api.member.service.SecondService : [Second Service]: AsyncExecutor-10
 2022-08-16 21:18:30.050 INFO 30824 --- [AsyncExecutor-2] c.i.b.api.member.service.SecondService : [Second Service]: AsyncExecutor-2
 ```
+
 로그를 보면 예상대로 15개 실행되고 5개가 남아서 실행되어 문제를 해결한 것을 확인할 수 있다.
 
 <br/>
 
 #### 2. ThreadPool의 coreSize와 maxSize를 10미만으로 사용
 
-만약 DBCP의 풀 사이즈를 변경할 생각이 없다면 ThreadPool의 사이즈를 조정할 수 밖에 없다. ThreadPool을 쓰는 작업이 Transaction이 없고, dbConnection을 가지지 않는다면, 많이 두어도 상관없기 때문에 두 개를 따로 관리하는 방법도 좋은 방법이 될 수 있다.  
+만약 DBCP의 풀 사이즈를 변경할 생각이 없다면 ThreadPool의 사이즈를 조정할 수 밖에 없다. ThreadPool을 쓰는 작업이 Transaction이 없고, dbConnection을 가지지 않는다면, 많이 두어도 상관없기 때문에 두 개를 따로 관리하는 방법도 좋은 방법이 될 수 있다.
 
 ```
 @Bean
@@ -185,6 +196,7 @@ public Executor AsyncExecutor() {
 	return threadPoolTaskExecutor;
 }
 ```
+
 :::tip
 maxPoolSize랑 queueCapacity는 기본 값이 둘 다 Integer.MAX_VALUE라서 core만 선택해줘도 된다.
 :::
@@ -212,11 +224,13 @@ maxPoolSize랑 queueCapacity는 기본 값이 둘 다 Integer.MAX_VALUE라서 co
 2022-08-16 21:21:17.353 INFO 36484 --- [AsyncExecutor-1] c.i.b.api.member.service.SecondService : [Second Service]: AsyncExecutor-1
 2022-08-16 21:21:17.355 INFO 36484 --- [AsyncExecutor-5] c.i.b.api.member.service.SecondService : [Second Service]: AsyncExecutor-5
 ```
+
 로그를 보면 5개씩 실행되어 정상적인 결과가 나온 것을 확인할 수 있다.
 
 <br />
 
 ### 느낀 점
+
 이거 처음 겪었을 때, 다른 업무도 해야 하기에 임시방편만 조치해두고 계속 찾아보고 있었다. 임시방편으로도 기능 상은 문제없지만, 원인을 못 찾는 버그는 진짜 맘에 계속 남아서 주변 사람들에게 물어봤지만 해결하지 못 했다. 그래도 역시 집요하게 파고 들면 안 되는건 없나보다. 어떤 문제든 해결할 수 없는 문제는 없다고 생각한다.
 
 <br />
