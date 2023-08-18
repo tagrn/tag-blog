@@ -8,9 +8,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: "Tag's Blog",
   tagline: 'Tag',
-  url: 'https://tagrn.github.io',
+  url: 'https://blog.taewan.link',
   baseUrl: '/',
-  projectName: 'tagrn.github.io',
+  projectName: 'tag-blog',
   organizationName: 'tagrn',
   deploymentBranch: 'deploy',
   trailingSlash: false,
