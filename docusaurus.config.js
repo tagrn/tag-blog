@@ -80,6 +80,12 @@ const config = {
           },
         ],
       },
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
+      },
       footer: {
         copyright: 'Mady by Engineer Tag',
       },
