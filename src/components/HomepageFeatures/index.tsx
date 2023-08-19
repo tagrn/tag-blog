@@ -50,6 +50,13 @@ export default function HomepageFeatures(): JSX.Element {
             <Feature key={idx} {...props} />
           ))}
         </div>
+        <div style={{ textAlign: 'center' }}>
+          <img
+            style={{ height: 20, width: 'auto' }}
+            src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fblog.taewan.link&amp;count_bg=%235B9F9B&amp;title_bg=%23454545&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false"
+            alt="Hits"
+          ></img>
+        </div>
       </div>
     </section>
   );

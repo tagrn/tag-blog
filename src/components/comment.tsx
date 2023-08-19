@@ -4,8 +4,8 @@ import { useColorMode } from '@docusaurus/theme-common';
 const utterancesSelector = 'iframe.utterances-frame';
 
 function Comment() {
-  const {isDarkTheme} = useColorMode();
-  const utterancesTheme = isDarkTheme ? 'github-dark' : 'github-light';
+  const {colorMode} = useColorMode();
+  const utterancesTheme = colorMode === "dark" ? 'github-dark' : 'github-light';
   const containerRef: any = useRef(null);
 
   useEffect(() => {
