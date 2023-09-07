@@ -75,6 +75,7 @@ const config = {
             label: 'Learn',
           },
           { to: '/blog', label: 'Post', position: 'left' },
+          { to: '/activity', label: 'Activity', position: 'left' },
           {
             type: 'html',
             position: 'right',

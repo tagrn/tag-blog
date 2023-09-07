@@ -1,0 +1,31 @@
+.features {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  margin: 0 0;
+  width: 100%;
+}
+
+.descriptionMainFeature {
+  font-weight: 550;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
+
+.title {
+  font-size: 24px;
+  text-align: left;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: 80px;
+  font-weight: 600;
+}
+
+.activityConainer {
+  display: flex;
+  justify-content: left;
+}

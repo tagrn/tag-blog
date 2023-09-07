@@ -1,0 +1,35 @@
+.features {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  margin: 0 0;
+  width: 100%;
+}
+
+.descriptionMainFeature {
+  font-weight: 550;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
+
+.cardConainer {
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border: 2.5px solid grey;
+  border-radius: 20px;
+  height: 200px;
+  width: 450px;
+  box-shadow: 12px 12px 3px 2px #363636;
+  margin-bottom: 50px;
+}
+
+.cardConainer:hover {
+  cursor: default;
+  transition: 0.5s;
+}
