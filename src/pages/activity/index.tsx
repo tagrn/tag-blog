@@ -38,7 +38,7 @@ export default function Home(): JSX.Element {
           }
         />
         <Card
-          title="깃허브 T-shirt 얻기"
+          title="LeetCode T-shirt 얻기"
           content={
             <div>
               <div>Redeem 6000을 모아 T-shirt를 얻는 챌린지</div>
