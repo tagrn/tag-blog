@@ -42,6 +42,7 @@ const config = {
           showReadingTime: true,
           postsPerPage: 5,
           blogSidebarCount: 10,
+          blogSidebarTitle: '최근 포스트 10',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
         },
