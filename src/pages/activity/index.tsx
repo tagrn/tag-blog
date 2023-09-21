@@ -22,7 +22,7 @@ export default function Home(): JSX.Element {
                 참가 링크
               </Link>
               <div>2022.07.18 ~ 진행 중</div>
-              <div>2023.09.07 현재 누적 참가 285명</div>
+              <div>2023.09.21 현재 누적 참가 294명</div>
             </div>
           }
         />
@@ -44,7 +44,7 @@ export default function Home(): JSX.Element {
               <div>Redeem 6000을 모아 T-shirt를 얻는 챌린지</div>
               <Link to={'https://leetcode.com/store/'}>티셔츠 상품 링크</Link>
               <div>2023.08.01 ~ 진행 중</div>
-              <div>2023.09.07 현재 Redeem: 932</div>
+              <div>2023.09.21 현재 Redeem: 1035</div>
             </div>
           }
         />
