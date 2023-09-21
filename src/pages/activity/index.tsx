@@ -11,8 +11,8 @@ export default function Home(): JSX.Element {
   return (
     <Layout title="진행중인 활동">
       <div className={styles.title}> 🧑🏻‍💻 진행중인 활동 </div>
-      <hr />
-      <div className={clsx('row')}>
+      <hr className={styles.splitLine} />
+      <div style={{ width: '100vw' }} className={clsx('row')}>
         <Card
           title="GitHub 잔디심기 챌린지"
           content={
@@ -42,7 +42,9 @@ export default function Home(): JSX.Element {
           content={
             <div>
               <div>Redeem 6000을 모아 T-shirt를 얻는 챌린지</div>
-              <Link to={'https://leetcode.com/store/'}>티셔츠 상품 링크</Link>
+              <Link to={'https://leetcode.com/Taewan-Gu'}>
+                릿코드 계정 링크
+              </Link>
               <div>2023.08.01 ~ 진행 중</div>
               <div>2023.09.21 현재 Redeem: 1035</div>
             </div>

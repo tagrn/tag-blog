@@ -14,7 +14,7 @@ export default function Card({ title, content }: FeatureItem): JSX.Element {
       <div className={styles.cardConainer}>
         <div className="text--center padding-horiz--md">
           <h2>{title}</h2>
-          <p className={styles.descriptionMainFeature}>{content}</p>
+          <div className={styles.descriptionMainFeature}>{content}</div>
         </div>
       </div>
     </div>
