@@ -17,7 +17,7 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 # 도커 설치
 sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io
 # 시스템 부팅시 도커 시작
-sudo systemctl enable docker && service docker start
+sudo systemctl enable docker && sudo service docker start
 # 도커 확인
 sudo service docker status
 ```
@@ -31,7 +31,7 @@ sudo usermod -aG docker $USER
 sudo service docker restart
 ```
 
-권한 부여가 제대로 동작하지 않는다면 다음 PostgreSQL 설치로 넘어가서 모든 명령어에 `sudo`를 붙여도 무방하다. 그래도 왠만하면 권한부여를 하는걸로.
+이후, 재접속하면 일반유저로 도커를 사용할 수 있다. 권한 부여가 제대로 동작하지 않는다면 다음 PostgreSQL 설치로 넘어가서 모든 명령어에 `sudo`를 붙여도 무방하다. 그래도 왠만하면 권한부여를 하는걸로.
 
 <br />
 
