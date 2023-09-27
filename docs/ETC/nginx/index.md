@@ -307,6 +307,14 @@ server {
 }
 ```
 
+### http2 설정
+
+```nginx
+server {
+  listen 443 ssl htttp2;
+  listen [::]:443 ssl http2;
+}
+```
 
 ### 추가 설정
 
