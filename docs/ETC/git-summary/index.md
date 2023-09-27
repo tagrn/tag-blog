@@ -3,7 +3,7 @@ sidebar_position: 3
 description: DVCS 중 하나인 Git에 대한 정리
 ---
 
-# Git 정리
+# Git
 
 :::info
 Git은 분산버전관리시스템(DVCS-Distributed Version Control System)이다. 소스코드의 버전 및 이력을 관리할 수 있다.
