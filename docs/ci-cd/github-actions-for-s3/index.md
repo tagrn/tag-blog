@@ -21,6 +21,7 @@ env:
   NODE_VERSION: 18.x # Node 버전 설정
   INSTALL_COMMAND: yarn install # npm이면 npm install
   BUILD_COMMAND: yarn build # npm이면 npm run build
+  BUILD_DIRECTORY: build # react면 build, vue면 dist
   AWS_REGION: ap-northeast-2 # 한국이면 ap-northeast-2 아니라면 AWS에서 확인
   AWS_S3_BUCKET: bucketname # S3 버킷 네임
 
@@ -31,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: git clone
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: set node version
         uses: actions/setup-node@v3
         with:
@@ -44,7 +45,7 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
-        run: aws s3 cp --recursive --region ${{ env.AWS_REGION }} build s3://${{ env.AWS_S3_BUCKET }}
+        run: aws s3 cp --recursive --region ${{ env.AWS_REGION }} ${{ env.BUILD_DIRECTORY }} s3://${{ env.AWS_S3_BUCKET }}
 ```
 
 :::tip
