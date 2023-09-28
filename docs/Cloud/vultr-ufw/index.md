@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 description: Vultr에서 OS 방화벽 설정하는 방법
 ---
 

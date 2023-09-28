@@ -1,5 +1,4 @@
 ---
-sidebar_position: 3
 description: Docker를 활용한 PostgreSQL 기본 설정
 ---
 

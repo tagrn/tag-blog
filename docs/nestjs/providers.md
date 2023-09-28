@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 description: 대표적인 4가지 Provider 사용방법 및 예제
 ---
 

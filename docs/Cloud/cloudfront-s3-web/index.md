@@ -1,5 +1,4 @@
 ---
-sidebar_position: 3
 description: S3 정적 웹사이트를 개인 도메인으로 변경하고 HTTPS를 붙여보자.
 ---
 

@@ -1,5 +1,4 @@
 ---
-sidebar_position: 5
 description: EFS 처리량모드 설정으로 비용을 절감하기
 ---
 

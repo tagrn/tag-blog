@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 description: http 요청에서 사용되는 대표적인 메소드
 ---
 

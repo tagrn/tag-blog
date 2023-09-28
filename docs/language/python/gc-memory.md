@@ -1,5 +1,4 @@
 ---
-sidebar_position: 3
 description: 파이썬의 GC와 메모리 관리 방법
 ---
 

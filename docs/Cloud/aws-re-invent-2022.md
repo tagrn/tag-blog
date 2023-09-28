@@ -1,5 +1,4 @@
 ---
-sidebar_position: 4
 description: AWS Re:Invent 동영상 2개 요약
 ---
 

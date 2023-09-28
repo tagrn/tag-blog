@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 description: Docker를 활용한 Mysql 기본 설정
 ---
 

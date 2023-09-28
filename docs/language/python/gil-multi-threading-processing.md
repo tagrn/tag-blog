@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 description: 파이썬에서 병렬 실행을 하는 방법
 ---
 

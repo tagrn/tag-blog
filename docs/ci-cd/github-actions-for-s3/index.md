@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 description: Github actions를 이용한 S3 정적 웹 호스팅을 자동배포
 ---
 

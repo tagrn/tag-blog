@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 description: watch 옵션과 핫 리로딩의 차이
 ---
 

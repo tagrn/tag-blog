@@ -1,5 +1,4 @@
 ---
-sidebar_position: 4
 description: Nest.js 라이프사이클 파헤치기
 ---
 

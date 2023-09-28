@@ -1,5 +1,4 @@
 ---
-sidebar_position: 3
 description: TypeOrmModule을 사용하지 않고 Typeorm을 쓸 수 있다.
 ---
 

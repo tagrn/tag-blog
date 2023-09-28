@@ -1,6 +1,5 @@
 ---
-sidebar_position: 4
-description: JSON 객체로 두 그룹간의 인증을 책임지는 JWT
+description: 다용도로 사용할 수 있는 경량 웹 서버
 ---
 
 # Nginx

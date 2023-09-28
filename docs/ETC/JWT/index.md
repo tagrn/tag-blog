@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 description: JSON 객체로 두 그룹간의 인증을 책임지는 JWT
 ---
 
