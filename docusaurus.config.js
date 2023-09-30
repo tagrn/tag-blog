@@ -67,7 +67,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Engineer Tag',
+        title: 'Developer Tag',
         items: [
           {
             type: 'doc',
