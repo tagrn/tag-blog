@@ -18,11 +18,11 @@ export default function Home(): JSX.Element {
           content={
             <div>
               <div>챌린저스 앱을 통해 개설하여 꾸준히 진행하고 있는 챌린지</div>
-              <Link to={'https://chlngers.onelink.me/Ju7U/213nhfse'}>
+              <Link to={'https://chlngers.onelink.me/Ju7U/c25w3g8d'}>
                 참가 링크
               </Link>
               <div>2022.07.18 ~ 진행 중</div>
-              <div>2023.09.21 현재 누적 참가 294명</div>
+              <div>2023.10.01 현재 누적 참가 298명</div>
             </div>
           }
         />
@@ -46,7 +46,7 @@ export default function Home(): JSX.Element {
                 릿코드 계정 링크
               </Link>
               <div>2023.08.01 ~ 진행 중</div>
-              <div>2023.09.21 현재 Redeem: 1035</div>
+              <div>2023.10.01 현재 Redeem: 1074</div>
             </div>
           }
         />
