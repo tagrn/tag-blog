@@ -13,14 +13,7 @@ const FeatureList: FeatureItem[] = [
     title: "Tag's Blog",
     description: (
       <div>
-        <Link
-          to="https://twngg.notion.site/Taewan-Gu-34800b401d214840af80ae98215ac632"
-          style={{ paddingRight: 15 }}
-        >
-          Portfolio
-        </Link>
-        {'   |   '}
-        <Link to="https://github.com/tagrn" style={{ paddingLeft: 15 }}>
+        <Link to="https://github.com/tagrn">
           GitHub
         </Link>
         <br />
