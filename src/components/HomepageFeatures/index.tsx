@@ -13,7 +13,7 @@ const FeatureList: FeatureItem[] = [
     title: "Tag's Blog",
     description: (
       <div>
-        <Link to="https://github.com/tagrn">
+        <Link to="https://github.com/tagrn/tag-blog">
           GitHub
         </Link>
         <br />
