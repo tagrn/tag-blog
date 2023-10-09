@@ -6,6 +6,7 @@ sidebar_position: 1
 
 **최근 작성/수정 글 10**
 
+- [ETC > Fetch Redirect](https://blog.taewan.link/docs/etc/fetch-redirect) - 23.10.09(월) 수정
 - [Database > DB 선정과정 예시](https://blog.taewan.link/docs/database/db-selection-process) - 23.10.08(일) 수정
 - [ETC > 프레임워크 선정과정 예시](https://blog.taewan.link/docs/etc/framework-selection-process) - 23.10.07(토) 수정
 - [CI/CD > S3 정적 웹사이트 자동배포](https://blog.taewan.link/docs/ci-cd/github-actions-for-s3) - 23.09.28(목) 수정
