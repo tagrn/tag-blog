@@ -6,6 +6,7 @@ sidebar_position: 1
 
 **최근 작성/수정 글 10**
 
+- [CI/CD > GitHub Actions](https://blog.taewan.link/docs/ci-cd/github-actions) - 23.10.11(수) 수정
 - [ETC > Docker](https://blog.taewan.link/docs/etc/docker) - 23.10.11(수) 수정
 - [ETC > setTimeOut vs setInterval](https://blog.taewan.link/docs/etc/set-time-out-vs-interval) - 23.10.09(월) 수정
 - [ETC > Fetch Redirect](https://blog.taewan.link/docs/etc/fetch-redirect) - 23.10.09(월) 수정
