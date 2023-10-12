@@ -124,6 +124,10 @@ def modify_page(page_id: int, title: str, content: str, parent_id: int | None = 
 
 처음 해본 브레드크럼스 구현인데다, 꾸준히 문제를 풀어온 알고리즘 덕을 톡톡히 본 것 같아 한층 더 재밌었다. 예전에 알고리즘이 개발에 필요한 사항인가에 대해 논의를 한 적이 있었는데, 그 때 답은 **"취업에 필요한 정도만 하면 된다."**가 나왔었다. 하지만 오늘부로 좀 바뀔 듯하다. 알고리즘 공부라는 것 자체가 취업 문턱을 넘을 정도만 하게 되면 실무에서 응용적으로 풀 수 있을지에 대한 의문이 생겼기 때문이다. 이래서 구글이나 마소에서 자료구조, 알고리즘 문제를 중요하게 보나보다.
 
+:::info
+🧑🏻‍💻 전체 코드: https://github.com/want-free-python/notion-api
+:::
+
 <br/>
 
-<div style={{"text-align": "right"}}> 최종 업데이트: 2023년 10월 11일 </div>
+<div style={{"text-align": "right"}}> 최종 업데이트: 2023년 10월 12일 </div>
