@@ -1,4 +1,5 @@
 ---
+description: Transaction Propagation 종류에 대해 알아본다.
 ---
 # Transaction Propagation
 
