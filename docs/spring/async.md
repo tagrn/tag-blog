@@ -13,11 +13,11 @@ description: Async 어노테이션에 대해 알아본다.
 간단하게 스택 트레이스를 통해서 **org.springframework.aop.interceptor** 패키지의 **AsyncExecutionInterceptor** 에서 가져온다는 것을 알 수 있었다. 해당 클래스에는 밑의 **getDefaultExecutor** 라는 메소드가 있고, 해당 메소드는 **defaultExecutor** 를 가져온다.
 
 ```java
-    @Nullable
-    protected Executor getDefaultExecutor(@Nullable BeanFactory beanFactory) {
-        Executor defaultExecutor = super.getDefaultExecutor(beanFactory);
-        return (Executor)(defaultExecutor != null ? defaultExecutor : new SimpleAsyncTaskExecutor());
-    }
+@Nullable
+protected Executor getDefaultExecutor(@Nullable BeanFactory beanFactory) {
+    Executor defaultExecutor = super.getDefaultExecutor(beanFactory);
+    return (Executor)(defaultExecutor != null ? defaultExecutor : new SimpleAsyncTaskExecutor());
+}
 ```
 
 <br/>
@@ -27,34 +27,34 @@ description: Async 어노테이션에 대해 알아본다.
 <br/>
 
 ```java
-    @Nullable
-    protected Executor getDefaultExecutor(@Nullable BeanFactory beanFactory) {
-        if (beanFactory != null) {
+@Nullable
+protected Executor getDefaultExecutor(@Nullable BeanFactory beanFactory) {
+    if (beanFactory != null) {
+        try {
+            return (Executor)beanFactory.getBean(TaskExecutor.class);
+        } catch (NoUniqueBeanDefinitionException var6) {
+            this.logger.debug("Could not find unique TaskExecutor bean. Continuing search for an Executor bean named 'taskExecutor'", var6);
+
             try {
-                return (Executor)beanFactory.getBean(TaskExecutor.class);
-            } catch (NoUniqueBeanDefinitionException var6) {
-                this.logger.debug("Could not find unique TaskExecutor bean. Continuing search for an Executor bean named 'taskExecutor'", var6);
-
-                try {
-                    return (Executor)beanFactory.getBean("taskExecutor", Executor.class);
-                } catch (NoSuchBeanDefinitionException var4) {
-                    if (this.logger.isInfoEnabled()) {
-                        this.logger.info("More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: " + var6.getBeanNamesFound());
-                    }
-                }
-            } catch (NoSuchBeanDefinitionException var7) {
-                this.logger.debug("Could not find default TaskExecutor bean. Continuing search for an Executor bean named 'taskExecutor'", var7);
-
-                try {
-                    return (Executor)beanFactory.getBean("taskExecutor", Executor.class);
-                } catch (NoSuchBeanDefinitionException var5) {
-                    this.logger.info("No task executor bean found for async processing: no bean of type TaskExecutor and no bean named 'taskExecutor' either");
+                return (Executor)beanFactory.getBean("taskExecutor", Executor.class);
+            } catch (NoSuchBeanDefinitionException var4) {
+                if (this.logger.isInfoEnabled()) {
+                    this.logger.info("More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: " + var6.getBeanNamesFound());
                 }
             }
-        }
+        } catch (NoSuchBeanDefinitionException var7) {
+            this.logger.debug("Could not find default TaskExecutor bean. Continuing search for an Executor bean named 'taskExecutor'", var7);
 
-        return null;
+            try {
+                return (Executor)beanFactory.getBean("taskExecutor", Executor.class);
+            } catch (NoSuchBeanDefinitionException var5) {
+                this.logger.info("No task executor bean found for async processing: no bean of type TaskExecutor and no bean named 'taskExecutor' either");
+            }
+        }
     }
+
+    return null;
+}
 ```
 
 <br/>
@@ -101,27 +101,27 @@ java.lang.NullPointerException
 
 ```java
 @Nullable
-    protected AsyncTaskExecutor determineAsyncExecutor(Method method) {
-        AsyncTaskExecutor executor = (AsyncTaskExecutor)this.executors.get(method);
-        if (executor == null) {
-            String qualifier = this.getExecutorQualifier(method);
-            Executor targetExecutor;
-            if (StringUtils.hasLength(qualifier)) {
-                targetExecutor = this.findQualifiedExecutor(this.beanFactory, qualifier);
-            } else {
-                targetExecutor = (Executor)this.defaultExecutor.get();
-            }
-
-            if (targetExecutor == null) {
-                return null;
-            }
-
-            executor = targetExecutor instanceof AsyncListenableTaskExecutor ? (AsyncListenableTaskExecutor)targetExecutor : new TaskExecutorAdapter(targetExecutor);
-            this.executors.put(method, executor);
+protected AsyncTaskExecutor determineAsyncExecutor(Method method) {
+    AsyncTaskExecutor executor = (AsyncTaskExecutor)this.executors.get(method);
+    if (executor == null) {
+        String qualifier = this.getExecutorQualifier(method);
+        Executor targetExecutor;
+        if (StringUtils.hasLength(qualifier)) {
+            targetExecutor = this.findQualifiedExecutor(this.beanFactory, qualifier);
+        } else {
+            targetExecutor = (Executor)this.defaultExecutor.get();
         }
 
-        return (AsyncTaskExecutor)executor;
+        if (targetExecutor == null) {
+            return null;
+        }
+
+        executor = targetExecutor instanceof AsyncListenableTaskExecutor ? (AsyncListenableTaskExecutor)targetExecutor : new TaskExecutorAdapter(targetExecutor);
+        this.executors.put(method, executor);
     }
+
+    return (AsyncTaskExecutor)executor;
+}
 ```
 
 <br/>
@@ -177,8 +177,8 @@ public void aaa() {
 <br/>
 
 ```java
-  @Bean
-  public Executor threadPoolTaskExecutor() {
+@Bean
+public Executor threadPoolTaskExecutor() {
     ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
     threadPoolTaskExecutor.setThreadNamePrefix("Tag");
     threadPoolTaskExecutor.setCorePoolSize(5);
@@ -187,7 +187,7 @@ public void aaa() {
     threadPoolTaskExecutor.initialize();
 
     return threadPoolTaskExecutor;
-  }
+}
 ```
 
 <br/>
