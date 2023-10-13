@@ -6,6 +6,7 @@ sidebar_position: 1
 
 **최근 작성/수정 글**
 
+- [Spring > Transactional ReadOnly](https://blog.taewan.link/docs/spring/transaction-readonly-option) - 23.10.13(금) 수정
 - [Spring > Async Annotation](https://blog.taewan.link/docs/spring/async) - 23.10.12(목) 수정
 - [ETC > Docker](https://blog.taewan.link/docs/etc/docker) - 23.10.11(수) 수정
 - [ETC > Nginx](https://blog.taewan.link/docs/ETC/nginx) - 23.09.28(목) 수정
