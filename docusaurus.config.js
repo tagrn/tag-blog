@@ -97,8 +97,10 @@ const config = {
         copyright: 'Mady by Engineer Tag',
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: require('prism-react-renderer/themes/github'),
+        darkTheme: require('prism-react-renderer/themes/dracula'),
+        defaultLanguage: 'ts',
+        additionalLanguages: ['java', 'python', 'bash'],
       },
     }),
 };
