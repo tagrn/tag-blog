@@ -94,7 +94,7 @@ const config = {
         },
       },
       footer: {
-        copyright: 'Mady by Engineer Tag',
+        copyright: 'Mady by Developer Tag',
       },
       prism: {
         theme: require('prism-react-renderer/themes/github'),
