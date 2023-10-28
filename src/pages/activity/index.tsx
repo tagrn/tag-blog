@@ -22,7 +22,7 @@ export default function Home(): JSX.Element {
                 참가 링크
               </Link>
               <div>2022.07 ~ 진행 중</div>
-              <div>2023.10.09 현재 누적 참가 303명</div>
+              <div>2023.10.28 현재 누적 참가 313명</div>
             </div>
           }
         />
@@ -46,7 +46,20 @@ export default function Home(): JSX.Element {
                 릿코드 계정 링크
               </Link>
               <div>2023.08 ~ 진행 중</div>
-              <div>2023.10.09 현재 Redeem: 1120</div>
+              <div>2023.10.28 현재 Redeem: 1163</div>
+            </div>
+          }
+        />
+        <Card
+          title="사이드 프로젝트: 목터뷰"
+          content={
+            <div>
+              <div>셀프 화상면접 서비스</div>
+              <Link to={'https://mockterview.com/'}>
+                서비스 링크
+              </Link>
+              <div>2023.09 ~ 진행 중</div>
+              <div>개발 중</div>
             </div>
           }
         />
