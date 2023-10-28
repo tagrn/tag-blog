@@ -158,7 +158,7 @@ func rearrangeIndices() {
 }
 ```
 
-위의 로직민 보면 조금 의문점이 들 수 있습니다. 저 코드에서 `removedIndices`이 정렬된 상태가 아니라면 제대로 동작하지 않기 때문입니다. 그렇기 때문에 재정렬 로직이 정상적으로 작동하기 위한 전제조건인 **`removedIndices`이 정렬된 상태 보장**을 삭제 시점에서 잘 정리해줘야 합니다. 삭제로직에서는 `removedIndices`에 인덱스를 그냥 넣는 것이 아닌 해당된 위치를 찾고 넣어주는 작업을 합니다.(여기서 이진탐색을 사용한다면 시간을 유의미하게 줄일 수 있습니다.) 밑은 삭제 로직 코드입니다.
+위의 로직만 보면 의문점이 들 수 있습니다. 저 코드에서 `removedIndices`이 정렬된 상태가 아니라면 제대로 동작하지 않기 때문입니다. 그렇기 때문에 재정렬 로직이 정상적으로 작동하기 위한 전제조건인 **`removedIndices`이 정렬된 상태 보장**을 삭제 시점에서 잘 정리해줘야 합니다. 삭제로직에서는 `removedIndices`에 인덱스를 그냥 넣는 것이 아닌 해당된 위치를 찾고 넣어주는 작업을 합니다.(여기서 이진탐색을 사용한다면 시간을 유의미하게 줄일 수 있습니다.) 밑은 삭제 로직 코드입니다.
 
 ```
 func remove(index) {
@@ -172,9 +172,43 @@ func remove(index) {
 }
 ```
 
-지금까지 주요 로직을 살펴보았고, 위와 같은 아이디어를 통해 해시리스트 버전 1을 구현하게 됩니다. 다른 리스트 자료구조와 비교하고자 한다면 밑의 표를 참고해주세요.
+삽입같은 경우는 **삽입할 인덱스와 해당 인덱스의 이전 인덱스 사이에 삭제된 요소가 존재 여부에 따라 성능이 차이**나게 됩니다. 삭제된 요소가 중간에 존재한다면 O(R)의 시간으로 넣을 수 있게 되지만 없다면 O(N)의 시간을 써서 배열과 같이 이후 요소들을 하나씩 밀어주는 작업을 해야하기 때문입니다. 밑은 삽입 코드의 주요 로직입니다. `if` 부분은 현재 인덱스와 이전 인덱스 중간에 삭제된 요소가 있는 경우이고 `else` 부분은 현재와 이전 인덱스 중간에 삭제된 요소가 없는 경우입니다.
 
-|                | Array | Linked List | Hash List 1 | 
+```
+adjustedIndex = adjustIndex(index)
+adjustedBeforeIndex = adjustIndex(index - 1)
+if (adjustedBeforeIndex !== adjustedIndex - 1) {
+  removedIndices.pop(bisect(adjustedIndex - 1, removedIndices))
+  hashTable[adjustedIndex - 1] = value
+} else {
+  before = hashTable[adjustedIndex];
+  for (i in range(adjustedIndex + 1, hashTable.size + removedIndices.length + 1)) {
+    if (hashTable[i]) {
+      hashTable[i], before = before, hashTable[i]
+    } else {
+      hashTable[i] = before;
+      if (i <= hashTable.size + removedIndices.length) {
+        removedIndices.pop(bisect(i, removedIndices));
+      }
+      break;
+    }
+  }
+  hashTable[adjustedIndex] = value;
+}
+```
+
+### 요약
+
+지금까지 주요 로직을 살펴보았고, 요약해보겠습니다.
+
+1. 해시리스트는 **해시테이블**을 이용하여 만들어진 리스트이다.
+2. **삭제한 인덱스를 저장**해 두고 리스트에 접근할 때 **접근 인덱스를 조정**한다.
+3. 삭제 시, 저장해두는 인덱스들은 **정렬**되어 있어야 한다.
+4. 삽입 시, **해당 인덱스와 이전 인덱스 사이에 삭제된 요소가 있다면 빠른 삽입**을 지원한다.
+
+**[자료구조 특징 비교 표]**
+
+|                | Array | Linked List | Hash List | 
 | -------------- | ----- | ----------- |  ----------- | 
 | 동적 크기 변경 | X     | O           | O           |
 | 중간 요소 삽입 | 느림  | 빠름        | (조건부)빠름    |
@@ -182,16 +216,15 @@ func remove(index) {
 | 중간 요소 조회 | 빠름  | 느림        | (조건부)빠름    |
 | 메모리 공간    | 지정  | 가변        | 가변        |
 
-
-
-이제 실제 코드로 확인해보겠습니다. 밑의 [실제 구현 및 테스트 코드](#실제-구현-및-테스트-코드)를 보시면 실제 구현한 해시 리스트를 확인할 수 있고, 실행해보면 모든 테스트를 통과함을 확인할 수 있습니다.
-
+<br/>
 
 ## 실제 구현 및 테스트 코드
 
 ---
 
-해당 코드는 타입스크립트로 작성하였습니다.
+위 설명으로는 부족하다고 생각하고 실제로 구현해봐야 해시리스트가 정상적으로 작동하는지 알 수 있을거라 생각합니다. 그래서 실제로 구현하고 테스트를 해보았고, 좀 더 알아보고 싶으신 분들은 코드를 살펴보며 해시리스트를 더 이해할 수 있었으면 합니다.
+
+**해당 코드는 타입스크립트로 작성하였습니다.**
 
 ```ts
 type Indices<T> = {
@@ -307,7 +340,7 @@ class HashList<T> {
 
     const targetIndex = adjustedIndex - 1;
     this.removedIndices.splice(bisect(targetIndex, this.removedIndices), 1);
-    this.indices[adjustedIndex - 1] = value;
+    this.indices[targetIndex] = value;
     this.size++;
   }
 
@@ -401,4 +434,4 @@ console.log(hashList.get(0) === 16);
 
 <br/>
 
-<div style={{"text-align": "right"}}> 최종 업데이트: 2023년 10월 27일 </div>
+<div style={{"text-align": "right"}}> 최종 업데이트: 2023년 10월 28일 </div>
