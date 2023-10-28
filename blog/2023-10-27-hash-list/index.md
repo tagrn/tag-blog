@@ -1,5 +1,5 @@
 ---
-slug: hash-list-a
+slug: hash-list
 title: 해시 리스트(Hash List) 구현
 authors: [tagrn]
 ---
