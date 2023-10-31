@@ -76,7 +76,7 @@ https://stackoverflow.com/questions/9880555/how-to-set-innodb-in-mysql-to-the-sn
 
 ### Recap
 
-위에서 말했듯이 readonly=true가 되면 DB에 이 트랜잭션이 조회 트랜잭션이라는 힌트를 전달한다. 그 힌트로 인해 데이터 변경이 없기 때문에 데이터 락을 설정할 필요가 없고, 읽기전용 트랜잭션을 위한 별도 스냅샷을 가져오며, (원래는 읽기-쓰기 트랜잭션이 기본인데 읽기전용 트랜잭션보다 무겁다.) 롤백을 위한 트랜잭션 ID를 만들지 않아도 된다.
+위에서 말했듯이 `readonly=true`가 되면 DB에 이 트랜잭션이 조회 트랜잭션이라는 힌트를 전달한다. 그 힌트로 인해 데이터 변경이 없기 때문에 데이터 락을 설정할 필요가 없고, 읽기전용 트랜잭션을 위한 별도 스냅샷을 가져오며, (원래는 읽기-쓰기 트랜잭션이 기본인데 읽기전용 트랜잭션보다 무겁다.) 롤백을 위한 트랜잭션 ID를 만들지 않아도 된다.
 
 ### 실제 확인
 
@@ -118,7 +118,8 @@ public class IndexService {
 
 **결과**
 
-환경: macOS, mem 16G, M1, java17, SpringBoot3.1.4, h2, jpa
+환경: macOS, mem 16G, M1, java17, SpringBoot3.1.4, h2, JPA
+단위: ms
 
 |시도 횟수 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -131,4 +132,4 @@ public class IndexService {
 
 <br/>
 
-<div style={{"text-align": "right"}}> 최종 업데이트: 2023년 10월 13일 </div>
+<div style={{"text-align": "right"}}> 최종 업데이트: 2023년 10월 31일 </div>
