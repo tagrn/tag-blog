@@ -146,9 +146,7 @@ RedisTemplate 사용 시에는 Operation 을 반환하여 해당 Operation을 �
 	}
 ```
 
-
 <br/>
-
 
 ## 실제 속도 비교
 
@@ -156,9 +154,8 @@ RedisTemplate 사용 시에는 Operation 을 반환하여 해당 Operation을 �
 
 |                | 저장 | 조회(데이터 없을 경우) | 조회(데이터 있을 경우) |
 | -------------- | ---- | ---------------------- | ---------------------- |
-| RedisTemplate  | 5ms    | 3ms                      | 3ms                      |
-| CrudRepository | 45ms   | 3ms                      | 13ms                     |
-
+| RedisTemplate  | 5ms  | 3ms                    | 3ms                    |
+| CrudRepository | 45ms | 3ms                    | 13ms                   |
 
 <br/>
 
@@ -168,12 +165,12 @@ RedisTemplate 사용 시에는 Operation 을 반환하여 해당 Operation을 �
 **CrudRepository가 RedisTemplate보다 느린 이유**
 
 1. KeySpace의 존재
-   * 단순 캐시용으로 SencondIndex 같은 옵션을 사용하지 않을 경우엔 KeySpace가 필요없지만 CrudRepository는 사용함.
-   * KeySpace의 크기가 커질수록 속도가 더 느려지며 BigKey가 될 수 있음.
+   - 단순 캐시용으로 SencondIndex 같은 옵션을 사용하지 않을 경우엔 KeySpace가 필요없지만 CrudRepository는 사용함.
+   - **KeySpace의 크기가 커질수록 속도가 더 느려지며** 메모리도 크게 사용하게 됨.
 2. 사용하지 않아도 될 명령어를 전달
-   * ex. TTL 을 확인하는 명령어도 사용하지 않아도 될 타이밍에 사용하는 경우가 있음.
+   - ex. TTL 을 확인하는 명령어도 사용하지 않아도 될 타이밍에 사용하는 경우가 있음.
 3. 명령어 중에 O(n) 의 속도 가진 명령어가 존재
-   * ex. hget을 써도 될 것을 hgetall 을 씀.
-:::
+   - ex. hget을 써도 될 것을 hgetall 을 씀.
+     :::
 
 <br/>
