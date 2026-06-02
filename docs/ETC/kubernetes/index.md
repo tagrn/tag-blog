@@ -11,16 +11,16 @@ description: Kubernetes(k8s)을 알아보자.
 
 ### 쿠버네티스 CICD - Pull 방식
 
-<img width="944" height="575" alt="image" src="https://github.com/user-attachments/assets/6626a9bc-f68c-4e4c-b52a-729957d46ebc" />
+Image Updater가 Git or DockerHub 등의 Repository를 바라보면서 코드가 변경될 때, k8s가 바라보는 Repository에 동기화 시킨다.
 
-Desired을 Current로 변경하려고 한다. 해당 부분은 Image Updater가 변경/감지하고 Operator가 동기화하게 끔 만든다.
+k8s는 Current를 Desired(k8s가 바라보는 Repository)로 동기화시키려고 하고 이 때, Operator가 나서서 Current를 동기화한다.
 
 보통 CICD를 통해서 배포를 진행함.
 
 
 ### 컨테이너
 
-<img width="828" height="403" alt="image" src="https://github.com/user-attachments/assets/54d5d1ae-d32f-44b4-bf5a-bded6289fbe6" />
+<img width="828" height="403" alt="image" caption="sds" src="https://github.com/user-attachments/assets/54d5d1ae-d32f-44b4-bf5a-bded6289fbe6" />
 
 Host OS의 커널을 공유하기 때문에 게스트 OS가 필요없음.
 
